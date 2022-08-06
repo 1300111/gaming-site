@@ -1,0 +1,81 @@
+#container{
+    width: 75%;
+    background-color: #dddddd;
+    text-align: center;
+    margin: auto;
+    border: 3px solid black;
+    border-radius: 30px;
+    font-family: "Comic Sans MS", monospace;
+}
+.choiceBtn{
+    width: 125px;
+    height: 30px;
+    background-color: #efefef;
+    font-family: "Comic Sans MS", monospace;
+    font-weight: bold;
+    margin: 10px;
+    border: 3px solid;
+    border-radius: 10px; 
+    cursor: pointer;
+}
+.choiceBtn:focus{outline: none;}
+.choiceBtn:hover{
+    transform: scale(1.1);
+}
+.choiceBtn:active{
+    transform: scale(1.1);
+    background-color: #bababa;
+}
+
+/*User Game CSS*/
+#labelUser{
+    text-align: left; 
+    margin: 25px;
+}
+#num{
+    font-size: 50px; 
+    font-weight: bold; 
+    margin: 10px;
+    margin-top: -20px;
+}
+
+/*Com Game CSS*/
+#guessNum{
+    width: 50px; 
+    height: 30px; 
+    border: 2px solid;
+    border-radius: 10px; 
+    margin: 15px; 
+    padding: 10px; 
+    font-family: 'Comic Sans MS', monospace; 
+    font-size: 26px; 
+    font-weight: bold;
+}
+#guessNum:focus{
+    outline: none; 
+}
+#submit{
+    width: 90px;
+    height: 33px;
+    background-color: #efefef;
+    font-size: 18px;
+    font-family: "Comic Sans MS", monospace;
+    font-weight: bold;
+    margin: 10px;
+    padding: 0px;
+    border: 3px solid;
+    border-radius: 10px; 
+    cursor: pointer;
+}
+#submit:focus{outline: none;}
+#submit:hover{
+    transform: scale(1.1);
+}
+#submit:active{
+    transform: scale(1.1);
+    background-color: #bababa;
+}
+
+#compare{
+    font-size: 30px;
+}
