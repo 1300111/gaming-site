@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> 
+</head>
+<body>
+    <h1>The Snake Game</h1>
+    <div id="difSelect">
+        <h2 id ="heading">Select difficulty:</h2>
+        <label id="easyText" for="easy" class="difText">Slow</label> 
+        <label id="mediumText" for="medium" class="difText">Medium</label>   
+        <label id="hardText" for="hard" class="difText">Fast</label>
+        <input id="easy" name="dif" class="dif" type="radio">
+        <input id="medium" name="dif" class="dif" type="radio" checked="checked">
+        <input id="hard" name="dif" class="dif" type="radio">
+    </div>
+    <br>
+    <div id="gameContainer">
+        <canvas id="gameBoard" width="500" height="500"></canvas>
+        <button id="runBtn">Start</button>
+    </div>
+    <div id="scoreLabel">Score: <span id="scoreText">0</span></div>
 
+    <script src="index.js"></script>
+</body>
+</html>
