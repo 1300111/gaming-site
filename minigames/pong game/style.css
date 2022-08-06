@@ -1,0 +1,58 @@
+body{
+    text-align: center;
+    font-family: "Comic Sans MS", monospace;
+}
+
+#gameContainer{
+    margin: auto;
+    position: relative;
+}
+
+#gameBoard{
+    border: 3px solid;
+}
+
+#runBtn{
+    width: 150px;
+    height: 45px;
+    font-size: 20px;
+    border-radius: 25px;
+
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%) scale(var(--scale));
+}
+#countDownText{
+    font-size: 50px;
+    color: white;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%)
+}
+
+#scoreText{
+    font-size: 50px;
+}
+
+button{
+    width: 80px;
+    height: 30px;
+    background-color: #efefef;
+    font-family: "Comic Sans MS", monospace;
+    font-weight: bold;
+    border: 3px solid;
+    border-radius: 25px; 
+    margin: auto;
+    cursor: pointer;
+
+    --scale: 1;
+    transform: scale(var(--scale));
+}
+button:focus{outline: none;}
+button:hover{--scale: 1.1;}
+button:active{
+    --scale: 1.1;
+    background-color: #bababa;
+}
