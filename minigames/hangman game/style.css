@@ -1,0 +1,205 @@
+#game-container{
+    width: 85%;
+    background-color: #8edffa;
+    margin: 0 20px;
+    padding: 10px 20px;
+    margin: auto;
+    border: 3px solid black;
+    border-radius: 10px;
+    font-family: "Comic Sans MS", monospace;
+}
+
+#word-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.letter-space{
+    font-size: 26px;
+    font-weight: bold;
+    margin: 5px;
+    margin-top: 20px;
+    width: 20px;
+    text-transform: uppercase;
+    display: none;
+}
+
+#endgame-text, #replay-btn{
+    display: none;
+}
+
+#input-container{
+    text-align: center;
+    position: relative;
+}
+#input-text{
+    width: 100px;
+    border: none;
+    border-bottom: 2px black solid;
+    background-color: #8edffa;
+    font-size: 18px;
+    padding: 0px 10px;
+    text-align: center;
+    font-family: 'Comic Sans MS', monospace; 
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#input-text:focus{
+    outline: none; 
+}
+
+#remind-container{
+    opacity: 0;
+}
+#remind-text{
+    font-style: italic;
+    font-size: 14px;
+    margin: 0px;
+    width: 30%;
+    position: absolute;
+    left: 65%;
+    top: 45%;
+}
+#remind-line{
+    width: 12%;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    left: 53%;
+    top: 45%;
+    transform: rotate(10deg);
+}
+
+button{
+    width: 125px;
+    height: 30px;
+    background-color: #ffffff;
+    font-family: "Comic Sans MS", monospace;
+    font-weight: bold;
+    margin: 10px;
+    border: 3px solid;
+    border-radius: 10px; 
+    cursor: pointer;
+}
+button:focus{outline: none;}
+button:hover{
+    transform: scale(1.1);
+}
+button:active{
+    transform: scale(1.1);
+    background-color: #dddddd;
+}
+
+#hint-btn{
+    margin: 0px;
+    width: 100px;
+    height: 21px;
+    font-size: 12px;
+    padding: 0;
+}
+
+#endgame-container{
+    text-align: center;
+}
+#endgame-text{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0px 10px;
+}
+
+/*hangman display*/
+#life-display{
+    position: relative;
+    height: 100px;
+    width: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.life-line{
+    visibility: hidden;
+    position: absolute;
+    background-color: black;
+}
+#line1{
+    width: 50px;
+    height: 3px;
+    bottom: 0;
+}
+#line2{
+    width: 3px;
+    height: 100px;
+    bottom: 0;
+    left: 25px;
+    transform: translateX(-50%);
+}
+#line3{
+    width: 50px;
+    height: 3px;
+    left: 25px;
+}
+#line4{
+    width: 3px;
+    height: 25px;
+    left: 75px;
+    transform: translateX(-50%);
+}
+#line5{
+    width: 20px;
+    height: 20px;
+    top: 25px;
+    left: 75px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+}
+#line5 > #innercircle5{
+    width: 16px;
+    height: 16px;
+    background-color: #8edffa;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+}
+#line6{
+    width: 2px;
+    height: 25px;
+    top: 45px;
+    left: 75px;
+    transform: translateX(-50%);
+}
+#line7{
+    width: 20px;
+    height: 2px;
+    top: 50px;
+    left: 75px;
+    transform-origin: right;
+    transform: translateX(-100%) rotate(-30deg);
+}
+#line8{
+    width: 20px;
+    height: 2px;
+    top: 50px;
+    left: 75px;
+    transform-origin: left;
+    transform: rotate(20deg);
+}
+#line9{
+    width: 25px;
+    height: 2px;
+    top: 70px;
+    left: 75px;
+    transform-origin: right;
+    transform: translate(-100%,-100%) rotate(-45deg);
+}
+#line10{
+    width: 25px;
+    height: 2px;
+    top: 70px;
+    left: 75px;
+    transform-origin: left;
+    transform: translateY(-100%) rotate(50deg);
+}

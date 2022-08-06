@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman!</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
 
+    <div id="game-container">
+        <div id="word-container">
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+            <div class="letter-space"></div>
+        </div>
+        
+        <div id="input-container">
+            <span id="input-text" role="textbox" contenteditable autofocus></span><br>
+            <div id="remind-container">
+                <div id="remind-line"></div>
+                <div id="remind-text">submit one letter or one word word only (no number)</div>
+            </div>
+            <button type="submit" id="submit-btn">Submit</button>
+        </div>
+
+        <div id="endgame-container">
+            <div id="endgame-text">YOU WIN!</div>
+            <button id="replay-btn">Replay</button>
+        </div>
+
+        <div id="life-display">
+            <div class="life-line" id="line1"></div>
+            <div class="life-line" id="line2"></div>
+            <div class="life-line" id="line3"></div>
+            <div class="life-line" id="line4"></div>
+            <div class="life-line" id="line5"><div id="innercircle5"></div></div>
+            <div class="life-line" id="line6"></div>
+            <div class="life-line" id="line7"></div>
+            <div class="life-line" id="line8"></div>
+            <div class="life-line" id="line9"></div>
+            <div class="life-line" id="line10"></div>
+        </div>
+
+        <div id="hint-container">
+            Hint: 
+            <div style="display: inline-block" id="hint-text"></div>
+            <button id="hint-btn">Click for hint</button>
+        </div>
+
+        <div id="letter-container">
+            Wrong letters: <span id="wrong-letters"></span>
+        </div>
+    </div>
+    
+    <script type="module" src="index.js"></script>
+</body>
+</html>
