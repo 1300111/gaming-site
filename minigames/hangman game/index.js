@@ -46,6 +46,8 @@ hintBtn.addEventListener("click", revealHint);
 replayBtn.addEventListener("click", replay);
 
 function checkInput(){
+    inputText.focus(); 
+    
     if(inputText.textContent.length == 0 || !isLettersAndSpaces(inputText.textContent)){
         revealRemind();
     }
