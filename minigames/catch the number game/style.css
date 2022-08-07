@@ -1,0 +1,58 @@
+#container{
+    width: 75%;
+    background-color: #dddddd;
+    text-align: center;
+    margin: auto;
+    border: 3px solid black;
+    border-radius: 30px;
+    font-family: "Comic Sans MS", monospace;
+}
+#gameContainer, #resultContainer{
+    position: relative;
+    top: -15px;
+}
+
+.difText{
+    font-size: 25px;
+    line-height: 10px;
+    margin: 10px;
+}
+.difText:hover{
+    font-size: 30px;
+}
+.dif{
+    display: none;
+}
+
+button{
+    width: 125px;
+    height: 30px;
+    background-color: #efefef;
+    font-family: "Comic Sans MS", monospace;
+    font-weight: bold;
+    margin-top: 0px;
+    border: 3px solid;
+    border-radius: 10px; 
+    cursor: pointer;
+}
+button:focus{outline: none;}
+button:hover{transform: scale(1.1);}
+button:active{
+    transform: scale(1.1);
+    background-color: #bababa;
+}
+#startBtn{
+    margin-bottom: 15px;
+}
+
+#targetText{
+    font-size: 18.72x;
+    font-weight: bold;
+}
+#targetTextNum{
+    font-size: 26px;
+    font-weight: bold;
+}
+#playground{
+    font-size: 40px;
+}
