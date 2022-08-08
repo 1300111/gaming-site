@@ -20,7 +20,10 @@
 .difText:hover{
     font-size: 30px;
 }
-.dif{
+#difTextContainer{
+    margin: 15px;
+}
+#radioContainer{
     display: none;
 }
 

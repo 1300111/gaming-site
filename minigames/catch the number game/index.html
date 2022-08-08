@@ -4,28 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catch The Number</title>
+    <title>Catch The Number!</title>
     <link rel="stylesheet" type="text/css" href="style.css"> 
 </head>
 <body>
     <div id="container">
         <h2 id ="heading">Select difficulty:</h2>
 
-        <label id="easyText" for="easy" class="difText">Easy</label>
-        
-        <label id="mediumText" for="medium" class="difText">Medium</label>
-        
-        <label id="hardText" for="hard" class="difText">Hard</label>
-        <br>
-        <input id="easy" name="dif" class="dif" type="radio" checked="checked">
-        <input id="medium" name="dif" class="dif" type="radio">
-        <input id="hard" name="dif" class="dif" type="radio">
-        <br>
+        <div id="difTextContainer">
+            <label id="easyText" for="easy" class="difText">Easy</label>        
+            <label id="mediumText" for="medium" class="difText">Medium</label>        
+            <label id="hardText" for="hard" class="difText">Hard</label>
+            <label id="randText" for="rand" class="difText">Random Speed</label>
+        </div>
+
+        <div id="radioContainer">
+            <input id="easy" name="dif" type="radio" checked="checked">
+            <input id="medium" name="dif" type="radio">
+            <input id="hard" name="dif" type="radio">
+            <input id="rand" name="dif" type="radio">
+        </div>
+
         <button id="startBtn">Start</button>
 
         <div id="gameContainer"></div>
         <div id="resultContainer"></div>
     </div>
+
     <script src="index.js"></script>
 </body>
 </html>

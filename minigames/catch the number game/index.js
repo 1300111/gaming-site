@@ -5,9 +5,11 @@ const resultContainer = document.getElementById("resultContainer");
 const easyChoice = document.getElementById("easy");
 const mediumChoice = document.getElementById("medium");
 const hardChoice = document.getElementById("hard");
+const randChoice = document.getElementById("rand");
 const easyText = document.getElementById("easyText");
 const mediumText = document.getElementById("mediumText");
 const hardText = document.getElementById("hardText");
+const randText = document.getElementById("randText");
 
 const startBtn = document.getElementById("startBtn");
 const targetText = document.createElement("label");
@@ -28,25 +30,26 @@ let t;
 setInterval(() => {
     if(easyChoice.checked){
         easyText.style.color = "green";
-        t = 350;
     }
     else{easyText.style.color = "black"}
     if(mediumChoice.checked){
         mediumText.style.color = "#d4d406";
-        t = 250;
     }
     else{mediumText.style.color = "black"}
     if(hardChoice.checked){
         hardText.style.color = "red";
-        t = 150;
     }
     else{hardText.style.color = "black"}
+    if(randChoice.checked){
+        randText.style.color = "purple";
+    }
+    else{randText.style.color = "black"}
 }, 1);
 
 let timer;
-let targetNum
-let num = 0;
-let k = -0.5;
+let targetNum;
+let num;
+let randomSpeed = false;
 startBtn.addEventListener("click", () => {
     startBtn.style.display = "none";
     catchBtn.style.display = "inline";
@@ -63,23 +66,55 @@ startBtn.addEventListener("click", () => {
     targetTextNum.textContent = targetNum;
     playground.textContent = num;
 
-    timer = setInterval(() => {
-        if(num == 10){k -= 1}
-        else if(num == 0){k += 1};
-        if(k > 0){
-            num += 1;
-            playground.textContent = num;
+    switch(true){
+        case easyChoice.checked:
+            t = 900; 
+            randomSpeed = false;
+            break;
+        case mediumChoice.checked:
+            t = 600; 
+            randomSpeed = false;
+            break;
+        case hardChoice.checked:
+            t = 300; 
+            randomSpeed = false;
+            break; 
+        case randChoice.checked:
+            t = 1; //will be random when running
+            randomSpeed = true;
+            break;       
+    }
+
+    updateNum();
+
+    function startTimer(){
+        timer = setTimeout(updateNum, t);
+    }  
+    
+    function updateNum(){
+        if(randomSpeed){
+            t = Math.floor(Math.random()*800) + 200;
+        }    
+
+        playground.textContent = createRandomNum();
+        function createRandomNum(){
+            num = Math.floor(Math.random()*11);
+
+            if(Number(playground.textContent) == num){
+                return createRandomNum(num)
+            }
+            else{
+                return num;
+            }
         }
-        else{
-            num -= 1;
-            playground.textContent = num;
-        }
-    }, t);   
+
+        startTimer();
+    }
 });
 
 
 catchBtn.addEventListener("click", () => {
-    clearInterval(timer);
+    clearTimeout(timer);
 
     resultContainer.append(congratText);
     resultContainer.append(replayText);
