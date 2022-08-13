@@ -2,3 +2,4 @@
 - detect multiple key pressed for movement
 - make a tutorial button 
 - enable auto shoot
+- make a countdown when starting and continuing the game
