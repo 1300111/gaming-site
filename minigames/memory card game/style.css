@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Comic Sans MS", "Calibri", monospace;
+}
+
+#game-container{
+    padding: 10px;
+    margin: 10px auto;
+    width: 435px;
+    background-color: #efefef;
+    border: 3px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#wrapper{
+    margin-bottom: 15px;
+}
+#wrapper::after{
+    content: "";
+    width: 435px;
+    height: 2px;
+    background-color: black;
+    border: 1px black solid; 
+    border-radius: 10px;
+    margin-top: 10px;
+    transform: translateX(-50%);
+    position: absolute;
+}
+
+#cards{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 5px;
+}
+.card{
+    width: 100px;
+    height: 100px;
+    background-color:  #bababa;
+    border: 2px black solid;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+}
+
+.card img{
+    height: 80px;
+    pointer-events: none;
+}
+
+.flip{
+    animation: flipAnimation .6s ease-in-out;
+}
+@keyframes flipAnimation{
+    from{transform: rotateY(0deg);}
+    to{transform: rotateY(180deg);}
+}
+
+.shake{
+    animation: shakeAnimation .3s ease-in-out;
+}
+@keyframes shakeAnimation{
+    0%{transform: translateX(0);}
+    20%{transform: translateX(4px);}
+    40%{transform: translateX(-4px);}
+    60%{transform: translateX(4px);}
+    80%{transform: translateX(-4px);}
+    100%{transform: translateX(0);}
+}
+
+#score-container{
+    margin: 5px;
+    height: 35px;
+    position: relative;
+}
+.score-text{
+    font-size: 24px;
+    position: absolute;
+}
+#pair-found{
+    left: 0;
+}
+#pair-left{
+    right: 0;
+}
+
+#win-display-text{
+    font-size: 50px;
+    font-weight: bold;
+    height: 431px;
+    width: 435px;
+    border-radius: 10px;
+    line-height: 431px;
+    background-color: rgba(150, 150, 150, 0.5);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 23px;
+}
+
+#replay-btn{
+    width: 125px;
+    height: 30px;
+    background-color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    border: 3px solid;
+    border-radius: 10px; 
+    cursor: pointer;
+}
+#replay-btn:focus{outline: none;}
+#replay-btn:hover{
+    transform: scale(1.1);
+}
+#replay-btn:active{
+    transform: scale(1.1);
+    background-color: #dddddd;
+}

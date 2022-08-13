@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Card Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="wrapper">
+            <ul id="cards">
+                <li class="card" id="card1">
+                    <img class="face-down" src="image/gomu.png" alt="gomu">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card2">
+                    <img class="face-down" src="image/gomu.png" alt="gomu">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card3">
+                    <img class="face-down" src="image/gura.png" alt="gura">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card4">
+                    <img class="face-down" src="image/gura.png" alt="gura">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card5">
+                    <img class="face-down" src="image/ope.png" alt="ope">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card6">
+                    <img class="face-down" src="image/ope.png" alt="ope">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card7">
+                    <img class="face-down" src="image/jiki.png" alt="jiki">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card8">
+                    <img class="face-down" src="image/jiki.png" alt="jiki">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card9">
+                    <img class="face-down" src="image/hana.png" alt="hana">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card10">
+                    <img class="face-down" src="image/hana.png" alt="hana">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card11">
+                    <img class="face-down" src="image/hito.png" alt="hito">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card12">
+                    <img class="face-down" src="image/hito.png" alt="hito">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card13">
+                    <img class="face-down" src="image/mera.png" alt="mera">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card14">
+                    <img class="face-down" src="image/mera.png" alt="mera">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card15">
+                    <img class="face-down" src="image/uo.png" alt="uo">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+                <li class="card" id="card16">
+                    <img class="face-down" src="image/uo.png" alt="uo">
+                    <img class="face-up" src="image/question.png" alt="question mark">
+                </li>
+            </ul>
+        </div>
+
+        <div id="score-container">
+            <div class="score-text" id="pair-found">Pairs found: <span id="pair-found-num">0</span></div>
+            <div class="score-text" id="pair-left">Pairs left: <span id="pair-left-num">8</span></div>
+        </div>
+
+        <div id="win-display-text">YOU WIN!</div>
+
+        <button id="replay-btn">Replay</button>
+    </div>
+
+    
+    <script src="index.js"></script>
+</body>
+</html>
