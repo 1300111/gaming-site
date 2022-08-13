@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Shooter!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-board" width="1020" height="500"></canvas>
+        <button id="start-btn" class="run-btn">Start</button>
+        <button id="continue-btn" class="run-btn" style="display: none">Continue</button>
+        <button id="replay-btn" class="run-btn" style="display: none">Replay</button>
+        <button id="tutorial-btn" style="display: none">See Tutorial</button>
+    </div>
+
+    <div id="data-container">
+        <div id="enemy-display" class="data-display">
+            ENEMIES DOWN: 
+            <span id="enemy-text">0</span>
+        </div>
+        <div id="life-display" class="data-display">
+            LIVES LEFT: 
+            <span id="life-text">3</span>
+        </div>
+    </div>
+
+    <button id="pause-btn" style="display: none">Pause</button>  
+
+    <script src="index.js"></script>
+</body>
+</html>
