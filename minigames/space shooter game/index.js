@@ -20,6 +20,7 @@ const invincibilityColor = "rgba(0, 0, 0, 0)";
 
 let tickIntervalID;
 let running = false;
+let runningT = false;
 let lastSpace = null;
 let lastShipTouch = null;
 let lastPause = Date.now();
@@ -30,27 +31,13 @@ let bullets = [];
 const bulletCreateTime = 350;
 
 let enemyIntervalID;
-let enemies1 = []; 
-let enemies2 = [];
-let enemies3 = [];
-let enemiesList = [
-    enemies1,
-    enemies2,
-    enemies3,
-];
+let enemies = [];
 let enemySpawnTime = 5000;
 
-let bombs1 = [];
+let bombs = [];
 const bomb1SpawnTime = 1000;
-let bombs2 = [];
 const bomb2SpawnTime = 1500;
-let bombs3 = [];
 const bomb3SpawnTime = 2000;
-let bombsList = [
-    bombs1,
-    bombs2,
-    bombs3,
-];
 
 let ship = {
     life: 3,
@@ -103,8 +90,8 @@ class Enemy1{
 
     lastBomb = Date.now()
     createBomb = setInterval(() => {
-        if(running && Date.now() - this.lastBomb >= bomb1SpawnTime){
-            bombs1.push(new Bomb1(this.x, this.y, this.width, this.height))
+        if((running || runningT) && Date.now() - this.lastBomb >= bomb1SpawnTime){
+            bombs.push(new Bomb1(this.x, this.y, this.width, this.height))
             this.lastBomb = Date.now();
         }
     }, tickInterval);
@@ -216,8 +203,8 @@ class Enemy2{
 
     lastBomb = Date.now()
     createBomb = setInterval(() => {
-        if(running && Date.now() - this.lastBomb >= bomb2SpawnTime){
-            bombs2.push(new Bomb2(this.x, this.y, this.width, this.height))
+        if((running || runningT) && Date.now() - this.lastBomb >= bomb2SpawnTime){
+            bombs.push(new Bomb2(this.x, this.y, this.width, this.height))
             this.lastBomb = Date.now();
         }
     }, tickInterval);
@@ -267,8 +254,8 @@ class Enemy3{
 
     lastBomb = Date.now()
     createBomb = setInterval(() => {
-        if(running && Date.now() - this.lastBomb >= bomb3SpawnTime){
-            bombs3.push(new Bomb3(this.x, this.y, this.width, this.height))
+        if((running || runningT) && Date.now() - this.lastBomb >= bomb3SpawnTime){
+            bombs.push(new Bomb3(this.x, this.y, this.width, this.height))
             this.lastBomb = Date.now();
         }
     }, tickInterval);
@@ -318,7 +305,8 @@ clearBoard();
 
 startBtn.addEventListener("click", () => {
     startBtn.style.display = "none";
-    // tutorialBtn.style.display = "none";
+    startBtn.setAttribute("clicked", "");
+    tutorialBtn.style.display = "none";
     pauseBtn.style.display = "block";
 
     startGame();
@@ -326,17 +314,13 @@ startBtn.addEventListener("click", () => {
 
 continueBtn.addEventListener("click", () => {
     continueBtn.style.display = "none";
-    // tutorialBtn.style.display = "none";
     pauseBtn.style.display = "block";
 
     pauseTime = Date.now() - lastPause;
-    console.log(pauseTime);
     lastSpace += pauseTime;
     lastShipTouch += pauseTime;
-    for(let i = 0; i < enemiesList.length; i++){
-        for(let j = 0; j < enemiesList[i].length; j++){
-            enemiesList[i][j].lastBomb += pauseTime;
-        }
+    for(let i = 0; i < enemies.length; i++){
+        enemies[i].lastBomb += pauseTime;
     }
 
     running = true;
@@ -345,7 +329,6 @@ continueBtn.addEventListener("click", () => {
 
 pauseBtn.addEventListener("click", () => {
     continueBtn.style.display = "block";
-    // tutorialBtn.style.display = "block";
     pauseBtn.style.display = "none";
 
     running = false;
@@ -354,7 +337,7 @@ pauseBtn.addEventListener("click", () => {
 
 replayBtn.addEventListener("click", () => {
     replayBtn.style.display = "none";
-    // tutorialBtn.style.display = "none";
+    tutorialBtn.style.display = "none";
     pauseBtn.style.display = "block";
 
     enemySpawnTime = 5000;
@@ -372,6 +355,7 @@ replayBtn.addEventListener("click", () => {
     updateEnemyText(0);
     lifeText.textContent = ship.life;
 
+    clearBoard();
     startGame();
 });
 
@@ -379,20 +363,20 @@ window.addEventListener("keydown", actShip);
 
 function startGame(){
     running = true;
-
-    clearBoard();
-    drawShip();
     
-    enemies1.push(new Enemy1);
-    enemies2.push(new Enemy2);
-    enemies3.push(new Enemy3);
+    enemies.push(new Enemy1);
+    enemies.push(new Enemy2);
+    enemies.push(new Enemy3);
     createEnemy();
+
+    ship.x = (gameWidth - 20) / 2;
+    ship.y = gameHeight - 20;
 
     nextTick();
 }
 
 function nextTick(){
-    if(running){
+    if(running || runningT){
         tickIntervalID = setTimeout(() => {
             clearBoard();
 
@@ -426,7 +410,7 @@ function actShip(event){
     const up = "KeyW";
     const down = "KeyS";
     const shoot = "Space";
-    if(running){
+    if(running || runningT){
         switch(keyPressed){
             case left:
                 if(ship.x > 0){
@@ -451,6 +435,10 @@ function actShip(event){
             case shoot:
                 createBullet();  
                 break;
+        }
+
+        if(runningT){
+            checkMoveTutorial();
         }
     }
 }
@@ -487,7 +475,6 @@ function drawBullet(bullet){
 
 
 function createEnemy(){
-    let enemy;
     let rand;
     enemyIntervalID = setTimeout(() => {
         if(running){
@@ -495,16 +482,13 @@ function createEnemy(){
 
             switch(rand){
                 case 1:
-                    enemy = new Enemy1;
-                    enemies1.push(enemy);
+                    enemies.push(new Enemy1);
                     break;
                 case 2:
-                    enemy = new Enemy2;
-                    enemies2.push(enemy);
+                    enemies.push(new Enemy2);
                     break;
                 case 3:
-                    enemy = new Enemy3;
-                    enemies3.push(enemy);
+                    enemies.push(new Enemy3);
                     break;
             }
         }
@@ -515,10 +499,8 @@ function createEnemy(){
 }
 
 function moveEnemy(){
-    for(let i = 0; i < enemiesList.length; i++){
-        for(let j = 0; j < enemiesList[i].length; j++){
-            enemiesList[i][j].move();
-        }
+    for(let i = 0; i < enemies.length; i++){
+        enemies[i].move();
     }
 }
 
@@ -528,6 +510,10 @@ function drawEnemy(enemy){
 }
 
 function clearEnemy(enemyList, index){
+    if(runningT){
+        checkEnemyTutorial(enemyList[index]);
+    }
+
     enemyList[index].stopBomb(); 
     enemyList.splice(index, 1);
     updateEnemyText(1);
@@ -535,15 +521,13 @@ function clearEnemy(enemyList, index){
 
 
 function dropBomb(){
-    for(let i = 0; i < bombsList.length; i++){
-        for(let j = 0; j < bombsList[i].length; j++){
-            if(bombsList[i][j].y < gameHeight){
-                bombsList[i][j].y += bombsList[i][j].speed;
+    for(let i = 0; i < bombs.length; i++){
+        if(bombs[i].y < gameHeight){
+            bombs[i].y += bombs[i].speed;
 
-                drawBomb(bombsList[i][j]);
-            }
-            else{bombsList[i].splice(j, 1);}
+            drawBomb(bombs[i]);
         }
+        else{bombs.splice(i, 1);}
     }
 }
 
@@ -555,26 +539,28 @@ function drawBomb(bomb){
 
 function checkBulletTouchEnemy(){
     let bullet, enemy;
-    for(let i = 0; i < enemiesList.length; i++){
-        for(let j = 0; j < enemiesList[i].length; j++){
-            for(let k = 0; k < bullets.length; k++){
-                bullet = bullets[k];
-                enemy = enemiesList[i][j];
-                
-                if(
-                    bullet.x >= enemy.x - bullet.width + 1 &&
-                    bullet.x <= enemy.x + enemy.width - 1 &&
-                    bullet.y >= enemy.y - bullet.height + 1 &&
-                    bullet.y <= enemy.y + enemy.height - 1
-                ){
-                    bullets.splice(k, 1);
+    for(let i = 0; i < enemies.length; i++){
+        for(let k = 0; k < bullets.length; k++){
+            bullet = bullets[k];
+            enemy = enemies[i];
+            
+            if(
+                bullet.x >= enemy.x - bullet.width + 1 &&
+                bullet.x <= enemy.x + enemy.width - 1 &&
+                bullet.y >= enemy.y - bullet.height + 1 &&
+                bullet.y <= enemy.y + enemy.height - 1
+            ){
+                bullets.splice(k, 1);
 
-                    if(enemy.class == "enemy3" && enemy.life == 2){
-                        enemy.life -= 1;
+                if(enemy.class == "enemy3" && enemy.life == 2){
+                    enemy.life -= 1;
+                    
+                    if(runningT){
+                        tutorialText.innerHTML = nextContent();
                     }
-                    else{
-                        clearEnemy(enemiesList[i], j)
-                    }
+                }
+                else{
+                    clearEnemy(enemies, i);
                 }
             }
         }
@@ -583,25 +569,23 @@ function checkBulletTouchEnemy(){
 
 function checkBombTouchShip(){
     let bomb;
-    for(let i = 0; i < bombsList.length; i++){
-        for(let j = 0; j < bombsList[i].length; j++){
-            bomb = bombsList[i][j];
+    for(let i = 0; i < bombs.length; i++){
+        bomb = bombs[i];
 
-            if(
-                bomb.x >= ship.x - bomb.width + 1 &&
-                bomb.x <= ship.x + ship.width - 1 &&
-                bomb.y >= ship.y - bomb.height + 1 &&
-                bomb.y <= ship.y + ship.height - 1
-            ){
-                if(!invincibleShip()){
-                    bombsList[i].splice(j, 1);
-                    updateLife();
+        if(
+            bomb.x >= ship.x - bomb.width + 1 &&
+            bomb.x <= ship.x + ship.width - 1 &&
+            bomb.y >= ship.y - bomb.height + 1 &&
+            bomb.y <= ship.y + ship.height - 1
+        ){
+            if(!invincibleShip()){
+                bombs.splice(i, 1);
+                updateLife();
 
-                    lastShipTouch = Date.now();
+                lastShipTouch = Date.now();
 
-                    displayInvincibility();
-                    ship.color = invincibilityColor;
-                }
+                displayInvincibility();
+                ship.color = invincibilityColor;
             }
         }
     }
@@ -609,25 +593,23 @@ function checkBombTouchShip(){
 
 function checkEnemyTouchShip(){
     let enemy;
-    for(let i = 0; i < enemiesList.length; i++){
-        for(let j = 0; j < enemiesList[i].length; j++){
-            enemy = enemiesList[i][j];
+    for(let i = 0; i < enemies.length; i++){
+        enemy = enemies[i];
 
-            if(
-                enemy.x >= ship.x - enemy.width + 1 &&
-                enemy.x <= ship.x + ship.width - 1 &&
-                enemy.y >= ship.y - enemy.height + 1 &&
-                enemy.y <= ship.y + ship.height - 1
-            ){
-                if(!invincibleShip()){
-                    clearEnemy(enemiesList[i], j);
-                    updateLife();
+        if(
+            enemy.x >= ship.x - enemy.width + 1 &&
+            enemy.x <= ship.x + ship.width - 1 &&
+            enemy.y >= ship.y - enemy.height + 1 &&
+            enemy.y <= ship.y + ship.height - 1
+        ){
+            if(!invincibleShip()){
+                clearEnemy(enemies, i);
+                updateLife();
 
-                    lastShipTouch = Date.now();
+                lastShipTouch = Date.now();
 
-                    displayInvincibility();
-                    ship.color = invincibilityColor;
-                }
+                displayInvincibility();
+                ship.color = invincibilityColor;
             }
         }
     }
@@ -645,7 +627,7 @@ function invincibleShip(){
 
 function displayInvincibility(){
     let displayInvincibilityIntervalID = setInterval(() => {
-        if(running){
+        if(running || runningT){
             if(invincibleShip()){
                 ship.color = ship.color == shipColor ? invincibilityColor : shipColor;
             }
@@ -677,12 +659,14 @@ function checkIncreaseDif(enemyDown){
 
 
 function updateLife(){
-    lifeText.textContent = --ship.life;
+    if(running){
+        lifeText.textContent = --ship.life;
 
-    if(ship.life == 0){
-        running = false;
+        if(ship.life == 0){
+            running = false;
 
-        displayGameOver();
+            displayGameOver();
+        }
     }
 }
 
@@ -704,22 +688,15 @@ function displayGameOver(){
     ctx.fillText("GAME OVER!!!", gameWidth / 2, gameHeight / 2 - 50);
 
     replayBtn.style.display = "block";
-    // tutorialBtn.style.display = "block";
+    tutorialBtn.style.display = "block";
     pauseBtn.style.display = "none";
 
-    for(let i = 0; i < enemiesList.length; i++){
-        for(let j = 0; j < enemiesList[i].length; j++){
-            enemiesList[i][j].stopBomb(); 
-        }
-        enemiesList[i].splice(0, enemiesList[i].length)
+    for(let i = 0; i < enemies.length; i++){
+        enemies[i].stopBomb(); 
     }
-
-    for(let i = 0; i < bombsList.length; i++){
-        bombsList[i].splice(0, bombsList[i].length);
-    }
-
+    enemies.splice(0, enemies.length);
+    bombs = [];
     bullets = [];
 
-    clearTimeout(tickIntervalID);
     clearTimeout(enemyIntervalID);
 }

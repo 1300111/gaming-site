@@ -11,9 +11,23 @@
     <div id="game-container">
         <canvas id="game-board" width="1020" height="500"></canvas>
         <button id="start-btn" class="run-btn">Start</button>
-        <button id="continue-btn" class="run-btn" style="display: none">Continue</button>
+        <button id="continue-btn" style="display: none">Continue</button>
         <button id="replay-btn" class="run-btn" style="display: none">Replay</button>
-        <button id="tutorial-btn" style="display: none">See Tutorial</button>
+        <button id="tutorial-btn">See Tutorial</button>
+        <button id="end-tutorial-btn">End Tutorial</button>
+  
+        <div id="tutorial-container">
+            <div id="tutorial-text-container">
+                <div id="tutorial-text"></div>
+            </div>
+            
+            <div id="data-tutorial-container">
+                <div id="enemy-tutorial-text" class="sub-tutorial-text">The more enemies taken down, the harder the game will be</div>
+                <img id="enemy-img" src="img/arrow.png">
+                <div id="life-tutorial-text" class="sub-tutorial-text">You have 3 lives, every time you lose one you will be invincible for 3 seconds</div>
+                <img id="life-img" src="img/arrow.png">
+            </div>
+        </div>
     </div>
 
     <div id="data-container">
@@ -27,8 +41,10 @@
         </div>
     </div>
 
-    <button id="pause-btn" style="display: none">Pause</button>  
+    <button id="pause-btn">Pause</button>  
+    <button id="skip-tutorial-btn">Skip Tutorial</button>
 
     <script src="index.js"></script>
+    <script src="tutorial.js"></script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+- remove key press delay
+- detect multiple key pressed for movement
+- enable auto shoot
+- add countdown

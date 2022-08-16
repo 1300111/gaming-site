@@ -1,7 +1,7 @@
 W, A, S, D to move
 Space to shoot
 Orange enemies move fast and drop fast bomb
-Blue enemies move moderately in a square
+Blue enemies move at a moderate speed in a square
 Green enemies move slowly and drop slow bombs
-They also need being shot twice to fall
-You have 3 lives, every time you lose one you will be invincible for 3 seconds.
+They also need being shot <b>twice</b> to be taken down
+Enjoy!!!
