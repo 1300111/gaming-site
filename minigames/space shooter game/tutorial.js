@@ -113,6 +113,7 @@ function endTutorial(){
 
     contentLine = 0;
     actShipCount = 0;
+    updateEnemyText(0);
 
     for(let i = 0; i < enemies.length; i++){
         enemies[i].stopBomb(); 
