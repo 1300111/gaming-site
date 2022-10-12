@@ -1,0 +1,4 @@
+light green: #AAD751
+dark green: #A2D149
+light brown: #E5C29F
+dark brown: #D7B899

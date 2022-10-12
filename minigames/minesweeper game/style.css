@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Comic Sans MS", "Calibri", monospace;
+}
+body{
+    text-align: center;
+}
+#game-container{
+    position: relative;
+}
+#wrapper{
+    margin: auto;
+    border: 3px solid black;
+    text-align: center;
+    position: relative;
+}
+
+#flag-num{
+    font-size: 25px;
+}
+#flag-count > img{
+    position: relative;
+    bottom: -5px;
+}
+
+#lands{
+    display: grid;
+    gap: 0px;
+}
+#lands > li{
+    font-family: "Calibri", monospace;
+    width: 25px;
+    height: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#lands > .odd{
+    background-color: #AAD751;
+}
+#lands > .even{
+    background-color: #A2D149;
+}
+#lands > li > img{
+    height: 25px;
+    pointer-events: none;
+}
+
+.result{
+    display: none;
+}
+.result.text{
+    font-size: 50px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#text-bg{
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 37.2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#replay-text{
+    font-size: 30px;
+    top: 55%;
+}
